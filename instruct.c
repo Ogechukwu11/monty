@@ -34,16 +34,13 @@ void push(stack_t **top, unsigned int line_number)
 	int num;
 
 	added_arg = strtok(NULL, " \t\n");
-	if (added_arg == NULL)
+	if (added_arg == NULL || !check_int(added_arg))
 	{
 		fprintf(stderr, "L%d: usage: push integer\n", line_number);
 		exit(EXIT_FAILURE);
 	}
 	num = atoi(added_arg);
-	if (!check_int(added_arg))
-	{
-		return;
-	}
+
 	new_item = malloc(sizeof(stack_t));
 	if (new_item == NULL)
 	{
