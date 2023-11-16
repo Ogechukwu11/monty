@@ -76,7 +76,7 @@ void inPro(stack_t **top, const char *instruct, unsigned int line)
 int main(int ac, char **av)
 {
 	stack_t *head = NULL;
-	char *opcode, *line = NULL, *line_copy = NULL;
+	char *opcode, *line = NULL;
 	size_t len = 0;
 	ssize_t read;
 	unsigned int line_number = 0;
@@ -93,21 +93,15 @@ int main(int ac, char **av)
 		fprintf(stderr, "Error: Can't open file %s\n", av[1]);
 		exit(EXIT_FAILURE);
 	}
+
 	do {
 		line_number++;
 		read = getline(&line, &len, file);
 		if (read != -1)
 		{
-			line_copy = strndup(line, read);
-			if (line_copy == NULL)
-			{
-				fprintf(stderr, "Error: strndup failed\n");
-				exit(EXIT_FAILURE);
-			}
-			opcode = strtok(line_copy, " \t\n");
+			opcode = strtok(line, " \t\n");
 			if (opcode != NULL)
 				inPro(&head, opcode, line_number);
-			free(line_copy);
 		}
 	} while (read != -1);
 	free(line);
