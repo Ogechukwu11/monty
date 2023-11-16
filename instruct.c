@@ -44,8 +44,7 @@ void push(stack_t **top, unsigned int line_number)
 	new_item = malloc(sizeof(stack_t));
 	if (new_item == NULL)
 	{
-		fprintf(stderr, "Error: malloc failed\n");
-		exit(EXIT_FAILURE);
+		return;
 	}
 
 	new_item->n = num;
