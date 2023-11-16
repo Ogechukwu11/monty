@@ -6,6 +6,7 @@ const instruction_t cmd[] = {
 	{"pop", pop},
 	{"swap", swap},
 	{"pint", pint},
+	{"add", add},
 	{"nop", nop},
 	{NULL, NULL}
 };
