@@ -1,9 +1,11 @@
 #ifndef MONTY_H
 #define MONTY_H
-#include <stddef.h>
+
 #include <stdio.h>
 #include <stdlib.h>
-#define _POSIX_C_SOURCE 200809L
+#include <string.h>
+#include <ctype.h>
+#include <stddef.h>
 
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
@@ -16,9 +18,9 @@
  */
 typedef struct stack_s
 {
-    int n;
-    struct stack_s *prev;
-    struct stack_s *next;
+	int n;
+	struct stack_s *prev;
+	struct stack_s *next;
 } stack_t;
 
 /**
@@ -31,21 +33,18 @@ typedef struct stack_s
  */
 typedef struct instruction_s
 {
-    char *opcode;
-    void (*f)(stack_t **stack, unsigned int line_number);
+	char *opcode;
+	void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
-void pint(stack_t **stack, unsigned int line_number);
-void pop(stack_t **stack, unsigned int line_number);
-void swap(stack_t **stack, unsigned int line_number);
-void add(stack_t **stack, unsigned int line_number);
-void nop(stack_t **stack, unsigned int line_number);
-void free_stack(stack_t **stack);
-void push(stack_t **stack, char *arg, unsigned int line_number);
-void pall(stack_t **stack, unsigned int line_number);
-int is_number(char *str);
-size_t _getline(char **lineptr, size_t *n, int fd);
-void execute_opcode(stack_t **stack, instruction_t *instructions, char *opcode, unsigned int line_number);
-void parse_line_and_execute_opcode(stack_t **stack, instruction_t *instructions, char *line, unsigned int line_number);
+int check_int(const char *string);
+void push(stack_t **top, unsigned int line_number);
+void pall(stack_t **top, unsigned int line_number);
+void pop(stack_t **top, unsigned int line_number);
+void pint(stack_t **top, unsigned int line_number);
+void swap(stack_t **top, unsigned int line_number);
+void freeTop(stack_t *top);
+int find_opcode(const char *instruct);
+void inPro(stack_t **top, const char *instruct, unsigned int line);
 
 #endif
