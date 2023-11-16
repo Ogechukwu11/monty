@@ -2,11 +2,11 @@
 
 /**
  * nop - Does nothing.
- * @stack: Double pointer to the head of the stack.
+ * @top: Pointer that points to the head pointer
  * @line_number: Line number where the opcode appears.
  */
-void nop(stack_t **stack, unsigned int line_number)
+void nop(stack_t **top, unsigned int line_number)
 {
-	(void)stack;
+	(void)top;
 	(void)line_number;
 }
