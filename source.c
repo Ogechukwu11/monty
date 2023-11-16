@@ -38,9 +38,7 @@ int find_opcode(const char *instruct)
 	while (cmd[c].opcode != NULL)
 	{
 		if (strcmp(instruct, cmd[c].opcode) == 0)
-		{
 			return (c);
-		}
 		c++;
 	}
 	return (-1);
@@ -49,7 +47,7 @@ int find_opcode(const char *instruct)
 /**
  * inPro - To process the instructions
  * @top: A pointer that points to the head pointer
- * @inst: The instructions
+ * @instruct: The instructions
  * @line: Keeps track of the lines in the list.
  * Return: void
  */
@@ -59,9 +57,7 @@ void inPro(stack_t **top, const char *instruct, unsigned int line)
 
 	index = find_opcode(instruct);
 	if (index != -1)
-	{
 		cmd[index].f(top, line);
-	}
 	else
 	{
 		fprintf(stderr, "L%d: unknown instruction %s\n", line, instruct);
@@ -110,9 +106,7 @@ int main(int ac, char **av)
 
 		opcode = strtok(line_copy, " \t\n");
 		if (opcode != NULL)
-		{
 			inPro(&head, opcode, line_number);
-		}
 		free(line_copy);
 		read = getline(&line, &len, file);
 	}

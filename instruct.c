@@ -33,7 +33,7 @@ void push(stack_t **top, unsigned int line_number)
 	char *added_arg;
 	int num;
 
-	added_arg = strtok(NULL, " \t\n"); 
+	added_arg = strtok(NULL, " \t\n");
 	if (added_arg == NULL)
 	{
 		fprintf(stderr, "L%d: usage: push integer\n", line_number);
