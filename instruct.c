@@ -50,10 +50,10 @@ void push(stack_t **top, unsigned int line_number)
 
 	new_item->n = num;
 	new_item->prev = NULL;
-	new_item->next = NULL;
-
 	new_item->next = *top;
 
+/*	new_item->next = *top;
+*/
 	if (*top != NULL)
 	{
 		(*top)->prev = new_item;
