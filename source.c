@@ -8,6 +8,7 @@ const instruction_t cmd[] = {
 	{"pint", pint},
 	{"add", add},
 	{"nop", nop},
+	{"pchar", pchar},
 	{"sub", sub},
 	{"div", div_op},
 	{"mul", mul_op},
@@ -40,7 +41,7 @@ void freeTop(stack_t *top)
 int find_opcode(const char *instruct)
 {
 	int c = 0;
-
+	
 	while (cmd[c].opcode != NULL)
 	{
 		if (strcmp(instruct, cmd[c].opcode) == 0)
