@@ -6,6 +6,7 @@ const instruction_t cmd[] = {
 	{"pop", pop},
 	{"swap", swap},
 	{"pint", pint},
+	{"add", add},
 	{"nop", nop},
 	{NULL, NULL}
 };
@@ -76,7 +77,7 @@ void inPro(stack_t **top, const char *instruct, unsigned int line)
 int main(int ac, char **av)
 {
 	stack_t *head = NULL;
-	char *opcode, *line = NULL, *line_copy = NULL;
+	char *opcode, *line = NULL;
 	size_t len = 0;
 	ssize_t read;
 	unsigned int line_number = 0;
@@ -87,30 +88,23 @@ int main(int ac, char **av)
 		fprintf(stderr, "Usage: %s <file>\n", av[0]);
 		exit(EXIT_FAILURE);
 	}
-
 	file = fopen(av[1], "r");
 	if (file == NULL)
 	{
 		fprintf(stderr, "Error: Can't open file %s\n", av[1]);
 		exit(EXIT_FAILURE);
 	}
-	read = getline(&line, &len, file);
-	while (read != -1)
-	{
-		line_number++;
-		line_copy = strndup(line, read);
-		if (line_copy == NULL)
-		{
-			fprintf(stderr, "Error: strndup failed\n");
-			exit(EXIT_FAILURE);
-		}
 
-		opcode = strtok(line_copy, " \t\n");
-		if (opcode != NULL)
-			inPro(&head, opcode, line_number);
-		free(line_copy);
+	do {
+		line_number++;
 		read = getline(&line, &len, file);
-	}
+		if (read != -1)
+		{
+			opcode = strtok(line, " \t\n");
+			if (opcode != NULL)
+				inPro(&head, opcode, line_number);
+		}
+	} while (read != -1);
 	free(line);
 	fclose(file);
 	freeTop(head);
