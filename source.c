@@ -9,6 +9,9 @@ const instruction_t cmd[] = {
 	{"add", add},
 	{"nop", nop},
 	{"sub", sub},
+	{"div", div_op},
+	{"mul", mul_op},
+	{"mod", mod_op},
 	{NULL, NULL}
 };
 

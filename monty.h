@@ -49,6 +49,9 @@ void freeTop(stack_t *top);
 int find_opcode(const char *instruct);
 void inPro(stack_t **top, const char *instruct, unsigned int line);
 void sub(stack_t **stack, unsigned int line_number);
+void div_op(stack_t **stack, unsigned int line_numberi);
+void mul_op(stack_t **stack, unsigned int line_number);
+void mod_op(stack_t **stack, unsigned int line_number);
 
 
 #endif
