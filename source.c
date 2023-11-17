@@ -16,6 +16,8 @@ const instruction_t cmd[] = {
 	{"pstr", pstr},
 	{"rotl", rotl},
 	{"rotr", rotr},
+	{"stack", stack},
+	{"queue", queue},
 	{NULL, NULL}
 };
 
