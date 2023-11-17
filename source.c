@@ -13,6 +13,7 @@ const instruction_t cmd[] = {
 	{"div", div_op},
 	{"mul", mul_op},
 	{"mod", mod_op},
+	{"pstr", pstr},
 	{NULL, NULL}
 };
 
