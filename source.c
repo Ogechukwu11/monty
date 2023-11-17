@@ -15,6 +15,7 @@ const instruction_t cmd[] = {
 	{"mod", mod_op},
 	{"pstr", pstr},
 	{"rotl", rotl},
+	{"rotr", rotr},
 	{NULL, NULL}
 };
 
